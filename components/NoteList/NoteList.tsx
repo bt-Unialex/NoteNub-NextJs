@@ -1,3 +1,4 @@
+import css from "./NoteList.module.css";
 import { Note } from "@/lib/api";
 import NoteItem from "../NoteItem/NoteItem";
 
@@ -7,7 +8,7 @@ type Props = {
 
 export default function NoteList({ notes }: Props) {
   return (
-    <ul>
+    <ul className={css.list}>
       {notes.map((note) => (
         <NoteItem key={note.id} item={note} />
       ))}

@@ -1,17 +1,22 @@
-import Link from "next/link";
-import styles from "./Header.module.css";
+// components/Header/Header.tsx
 
-export default function Header() {
+import Link from "next/link";
+import css from "./Header.module.css";
+import { getCategories } from "@/lib/api";
+import CategoriesMenu from "../CategoriesMenu/CategoriesMenu";
+
+const Header = async () => {
+  const categories = await getCategories();
+
   return (
-    <header className={styles.header}>
-      <h2>NoteHub</h2>
-      <nav>
-        <ul className={styles.navigation}>
+    <header className={css.header}>
+      <Link href="/" aria-label="Home">
+        NoteHub
+      </Link>
+      <nav aria-label="Main Navigation">
+        <ul className={css.navigation}>
           <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/notes">Notes</Link>
+            <CategoriesMenu categories={categories} />
           </li>
           <li>
             <Link href="/profile">Profile</Link>
@@ -23,4 +28,6 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
+
+export default Header;

@@ -1,5 +1,5 @@
 // components/NoteItem/NoteItem.tsx
-
+import css from "./NoteItem.module.css";
 import Link from "next/link";
 import { Note } from "@/lib/api";
 
@@ -9,8 +9,10 @@ type Props = {
 
 const NoteItem = ({ item }: Props) => {
   return (
-    <li>
-      <Link href={`/notes/${item.id}`}>{item.title}</Link>
+    <li className={css.listItem}>
+      <Link className={css.title} href={`/notes/${item.id}`}>
+        {item.title}
+      </Link>
     </li>
   );
 };
