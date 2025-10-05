@@ -1,24 +1,22 @@
-// app/@modal/(.)notes/[id]/page.tsx
-
 import { getSingleNote } from "@/lib/api";
 import Modal from "../../Modal";
+import NotePreview from "@/components/NotePreview/NotePreview";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
-const NotePreview = async ({ params }: Props) => {
+const NoteById = async ({ params }: Props) => {
   const { id } = await params;
   const note = await getSingleNote(id);
 
   return (
     <>
       <Modal>
-        <h2>{note?.title}</h2>
-        <p>{note?.content}</p>
+        <NotePreview note={note} />
       </Modal>
     </>
   );
 };
 
-export default NotePreview;
+export default NoteById;

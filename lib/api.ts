@@ -1,4 +1,4 @@
-import { Category, NoteListResponse } from "@/types/notes";
+import { Category, Note, NoteListResponse } from "@/types/notes";
 import axios from "axios";
 
 const fallbackNotes: NoteListResponse = {
@@ -101,7 +101,7 @@ export const getNotes = async (categoryId?: string) => {
 
 export const getSingleNote = async (id: string) => {
   const res = fallbackNotes.notes.find((note) => note.id === id);
-  return res;
+  return res as Note;
   //   const res = await axios.get<Note>(`/notes/${id}`);
   //   return res.data;
 };

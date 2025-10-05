@@ -1,24 +1,22 @@
-// components/Modal/Modal.tsx
-
 "use client";
-
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import css from "./Modal.module.css";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const Modal = ({ children }: Props) => {
-  const router = useRouter();
-
-  const close = () => router.back();
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   return (
-    <div>
-      <div>
-        {children}
-        <button onClick={close}>Close</button>
-      </div>
+    <div className={css.backdrop}>
+      <div className={css.modal}>{children}</div>
     </div>
   );
 };
