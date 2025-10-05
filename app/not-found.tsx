@@ -12,7 +12,7 @@ const NotFound = () => {
 
 export default NotFound;
 
-// app/not-found.tsx
+// with redirection
 
 // 'use client';
 
