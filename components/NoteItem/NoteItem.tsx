@@ -1,7 +1,6 @@
-// components/NoteItem/NoteItem.tsx
 import css from "./NoteItem.module.css";
 import Link from "next/link";
-import { Note } from "@/lib/api";
+import { Note } from "@/types/notes";
 
 type Props = {
   item: Note;
