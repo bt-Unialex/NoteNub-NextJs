@@ -1,6 +1,6 @@
 import css from "./NoteList.module.css";
-import { Note } from "@/lib/api";
 import NoteItem from "../NoteItem/NoteItem";
+import { Note } from "@/types/notes";
 
 type Props = {
   notes: Note[];
