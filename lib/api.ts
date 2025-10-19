@@ -36,8 +36,8 @@ import axios from "axios";
 
 const fallbackCategories: Category[] = [
   {
-    id: "ShoppingID",
-    name: "Shopping",
+    id: "ShopingID",
+    name: "Shoping",
     description: "Shopping Description",
     createdAt: "2024-05-05T10:15:00Z",
     updatedAt: "2024-05-05T10:15:00Z",

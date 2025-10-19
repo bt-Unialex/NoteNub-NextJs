@@ -67,7 +67,7 @@ const NoteForm = ({ categories }: Props) => {
       <label className={css.formGroup}>
         Category
         <select
-          name="category"
+          name="tag"
           className={css.select}
           defaultValue={draft?.tag}
           onChange={handleChange}
