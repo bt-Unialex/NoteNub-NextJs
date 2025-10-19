@@ -1,5 +1,6 @@
 "use client";
 
+import { useNoteDraftStore } from "@/lib/stores/noteStore";
 import css from "./NoteForm.module.css";
 import { createNote } from "@/lib/api";
 import { Category, NewNoteData } from "@/types/notes";
@@ -11,10 +12,25 @@ type Props = {
 };
 
 const NoteForm = ({ categories }: Props) => {
+  const { draft, setDraft, clearDraft } = useNoteDraftStore();
+
+  const handleChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    // 4. Коли користувач змінює будь-яке поле форми — оновлюємо стан
+    setDraft({
+      ...draft,
+      [event.target.name]: event.target.value,
+    });
+  };
   const router = useRouter();
+  const handleCancel = () => router.push("/notes/filter/all");
   const { mutate } = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
+      clearDraft();
       router.push("/notes/filter/all");
     },
   });
@@ -24,23 +40,38 @@ const NoteForm = ({ categories }: Props) => {
 
     console.log(values);
   };
-  const handleCancel = () => router.push("/notes/filter/all");
 
   return (
     <form action={handleSubmit} className={css.form}>
       <label className={css.formGroup}>
         Title
-        <input type="text" name="title" className={css.input} />
+        <input
+          type="text"
+          name="title"
+          className={css.input}
+          defaultValue={draft?.title}
+          onChange={handleChange}
+        />
       </label>
 
       <label className={css.formGroup}>
         Content
-        <textarea name="content" className={css.textarea}></textarea>
+        <textarea
+          name="content"
+          className={css.textarea}
+          defaultValue={draft?.content}
+          onChange={handleChange}
+        ></textarea>
       </label>
 
       <label className={css.formGroup}>
         Category
-        <select name="category" className={css.select}>
+        <select
+          name="category"
+          className={css.select}
+          defaultValue={draft?.tag}
+          onChange={handleChange}
+        >
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}

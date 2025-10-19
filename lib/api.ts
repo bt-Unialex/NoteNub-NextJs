@@ -107,13 +107,8 @@ const fallbackCategories: Category[] = [
   },
 ];
 
-const apiURL = process.env.NEXT_API_URL;
-const accessToken = process.env.NEXT_API_ACCESS_TOKEN;
-const notesApi = axios.create({
-  baseURL: apiURL,
-  timeout: 1000,
-  // headers: { Authorization: `Bearer ${accessToken}` },
-  headers: { Cookie: `accessToken=${accessToken}` },
+const nextServer = axios.create({
+  baseURL: "http://localhost:3000/api",
   withCredentials: true,
 });
 
@@ -140,7 +135,9 @@ export const getNotes = async (categoryId?: string) => {
   // return response;
   //-----------TEMP-DATA--------------
 
-  const { data: allNotes } = await notesApi.get<NoteListResponse>("/notes");
+  const { data: allNotes } = await nextServer.get<NoteListResponse>("/notes", {
+    params: { categoryId },
+  });
   // console.log("allNotes:", allNotes);
   let response: NoteListResponse;
   if (categoryId) {
@@ -161,7 +158,7 @@ export const getNotes = async (categoryId?: string) => {
 };
 
 export const getSingleNote = async (id: string) => {
-  const response = await notesApi.get<Note>(`/notes/${id}`);
+  const response = await nextServer.get<Note>(`/notes/${id}`);
   return response.data;
 
   // const response = fallbackNotes.notes.find((note) => note.id === id);
@@ -176,6 +173,6 @@ export const getCategories = async () => {
 };
 
 export const createNote = async (data: NewNoteData) => {
-  const result = await notesApi.post<Note>("/notes", data);
+  const result = await nextServer.post<Note>("/notes", data);
   return result.data;
 };
