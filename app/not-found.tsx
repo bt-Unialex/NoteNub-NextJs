@@ -1,5 +1,20 @@
 import Link from "next/link";
 import css from "./page.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Page not found - NoteHub",
+  description:
+    "The page you are looking for does not exist or was moved. Navigate back to NoteHub.",
+  openGraph: {
+    title: "Page not found - NoteHub",
+    description:
+      "The page you are looking for does not exist or was moved. Navigate back to NoteHub.",
+    url: "/not-found",
+    images: [{ url: "/notehub-og-meta.jpg" }],
+  },
+};
+
 const NotFound = () => {
   return (
     <div>

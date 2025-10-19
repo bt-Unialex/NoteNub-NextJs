@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props) {
       siteName: "NoteHub",
       images: [
         {
-          url: "https://ac.goit.global/fullstack/react/og-meta.jpg",
+          url: "/og-meta.jpg",
           width: 1200, //recomended 1200×630 px
           height: 630,
           alt: note.title,
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props) {
       card: "summary_large_image", //card type from ['summary_large_image','summary','app','player',title]
       title: `${note.title}`,
       description: note.content.slice(0, 3), //~100 - max 200 chars
-      images: ["https://ac.goit.global/fullstack/react/og-meta.jpg"], //recomended 1200×630 px
+      images: ["/og-meta.jpg"], //recomended 1200×630 px
     },
   };
 }
