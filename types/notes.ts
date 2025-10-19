@@ -8,6 +8,11 @@ export type Note = {
   tag: string;
 };
 
+export type NewNoteData = {
+  title: string;
+  content: string;
+  tag: string;
+};
 export type NoteListResponse = {
   notes: Note[];
   total: number;

@@ -1,4 +1,4 @@
-import { Category, Note, NoteListResponse } from "@/types/notes";
+import { Category, NewNoteData, Note, NoteListResponse } from "@/types/notes";
 import axios from "axios";
 
 // const fallbackNotes: NoteListResponse = {
@@ -173,4 +173,9 @@ export const getCategories = async () => {
 
   //   const res = await axios<Category[]>("/categories");
   //   return res.data;
+};
+
+export const createNote = async (data: NewNoteData) => {
+  const result = await notesApi.post<Note>("/notes", data);
+  return result.data;
 };
