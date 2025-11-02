@@ -1,3 +1,5 @@
+import { AxiosError } from "axios";
+
 export type Note = {
   id: string;
   title: string;
@@ -24,4 +26,25 @@ export type Category = {
   description: string;
   createdAt: string;
   updatedAt: string;
+};
+
+export type ApiError = AxiosError<{
+  error: string;
+  message?: string;
+  validation?: { body: { message: string } };
+}>;
+
+export type RegisterRequest = {
+  email: string;
+  password: string;
+  userName: string;
+};
+
+export type User = {
+  id: string;
+  email: string;
+  userName?: string;
+  photoUrl?: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
