@@ -28,6 +28,16 @@ const Header = async () => {
               About
             </Link>
           </li>
+          <li className={css.navigationItem}>
+            <Link href="/sign-in" className={css.navigationLink}>
+              Login
+            </Link>
+          </li>
+          <li className={css.navigationItem}>
+            <Link href="/sign-up" className={css.navigationLink}>
+              Register
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
