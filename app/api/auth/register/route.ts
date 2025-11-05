@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
       email: body.email,
       password: body.password,
     });
-    console.log("apiRes:", apiRes);
 
     // Отримуємо інстанс для роботи з cookies
     const cookieStore = await cookies(); // Отримуємо значення set-cookie з хедерів

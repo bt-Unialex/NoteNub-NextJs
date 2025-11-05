@@ -1,6 +1,7 @@
 "use client";
 
 import { register } from "@/lib/api";
+import { useAuthStore } from "@/lib/stores/authStore";
 import { ApiError, RegisterRequest } from "@/types/notes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,13 +9,15 @@ import { useState } from "react";
 const SignUp = () => {
   const router = useRouter();
   const [error, setError] = useState("");
+  const setUser = useAuthStore((state) => state.setUser);
 
   const handleSubmit = async (formData: FormData) => {
     const formValues = Object.fromEntries(formData) as RegisterRequest;
     try {
-      const response = await register(formValues);
+      const res = await register(formValues);
 
-      if (response) {
+      if (res) {
+        setUser(res);
         router.push("/profile");
       } else {
         setError("Invalid email or password");

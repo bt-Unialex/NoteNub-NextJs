@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/lib/api";
 import { ApiError, LoginRequest } from "@/types/notes";
+import { useAuthStore } from "@/lib/stores/authStore";
 
 const SignIn = () => {
   const router = useRouter();
   const [error, setError] = useState("");
+  const setUser = useAuthStore((state) => state.setUser);
 
   const handleSubmit = async (formData: FormData) => {
     try {
@@ -15,6 +17,7 @@ const SignIn = () => {
       const formValues = Object.fromEntries(formData) as LoginRequest; // Виконуємо запит
       const res = await login(formValues); // Виконуємо редірект або відображаємо помилку
       if (res) {
+        setUser(res);
         router.push("/profile");
       } else {
         setError("Invalid email or password");

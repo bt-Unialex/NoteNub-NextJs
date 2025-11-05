@@ -4,6 +4,7 @@ import Link from "next/link";
 import css from "./Header.module.css";
 import { getCategories } from "@/lib/api";
 import TagsMenu from "../TagsMenu/TagsMenu";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 
 const Header = async () => {
   const categories = await getCategories();
@@ -28,16 +29,7 @@ const Header = async () => {
               About
             </Link>
           </li>
-          <li className={css.navigationItem}>
-            <Link href="/sign-in" className={css.navigationLink}>
-              Login
-            </Link>
-          </li>
-          <li className={css.navigationItem}>
-            <Link href="/sign-up" className={css.navigationLink}>
-              Register
-            </Link>
-          </li>
+          <AuthNavigation />
         </ul>
       </nav>
     </header>
