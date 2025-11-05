@@ -1,18 +1,18 @@
-// components/CategoriesMenu/CategoriesMenu.tsx
-
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import css from "./TagsMenu.module.css";
 import { Category } from "@/types/notes";
+import { getCategories } from "@/lib/api";
 
-type Props = {
-  categories: Category[];
-};
-
-const TagsMenu = ({ categories }: Props) => {
+const TagsMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    getCategories().then((data) => setCategories(data));
+  }, []);
 
   return (
     <div className={css.menuContainer}>
