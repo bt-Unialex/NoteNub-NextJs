@@ -1,8 +1,8 @@
 import { ApiError } from "@/types/notes";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { notesApi } from "../../api";
 import { parse } from "cookie";
+import { notesApi } from "@/lib/api/serverApi";
 
 export async function GET() {
   try {

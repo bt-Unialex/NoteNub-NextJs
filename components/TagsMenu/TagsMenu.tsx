@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import css from "./TagsMenu.module.css";
 import { Category } from "@/types/notes";
-import { getCategories } from "@/lib/api";
+import { getCategories } from "@/lib/api/clientApi";
 
 const TagsMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

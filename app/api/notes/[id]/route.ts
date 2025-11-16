@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { notesApi } from "../../api";
 import { ApiError } from "@/types/notes";
+import { notesApi } from "@/lib/api/serverApi";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -9,7 +9,7 @@ type Props = {
 export async function GET(request: NextRequest, { params }: Props) {
   const { id } = await params;
   try {
-    const { data } = await notesApi(`/notes/${id}`);
+    const { data } = await notesApi.get(`/notes/${id}`);
 
     return NextResponse.json(data);
   } catch (error) {

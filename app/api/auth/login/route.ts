@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { parse } from "cookie";
 import { cookies } from "next/headers";
 import { ApiError } from "@/types/notes";
-import { notesApi } from "../../api";
+import { notesApi } from "@/lib/api/serverApi";
 
 export async function POST(req: NextRequest) {
   // Парсимо тіло запиту

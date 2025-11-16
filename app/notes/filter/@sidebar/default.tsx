@@ -1,9 +1,9 @@
 import css from "./SidebarNotes.module.css";
 import Link from "next/link";
-import { getCategories } from "@/lib/api";
+import { possibleCategories } from "@/lib/api/serverApi";
 
-const NotesSidebar = async () => {
-  const categories = await getCategories();
+const NotesSidebar = () => {
+  const categories = possibleCategories;
 
   return (
     <>

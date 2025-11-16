@@ -1,6 +1,6 @@
 "use client";
 
-import { register } from "@/lib/api";
+import { register } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/stores/authStore";
 import { ApiError, RegisterRequest } from "@/types/notes";
 import { useRouter } from "next/navigation";
