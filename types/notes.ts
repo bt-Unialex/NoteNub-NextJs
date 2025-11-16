@@ -17,7 +17,7 @@ export type NewNoteData = {
 };
 export type NoteListResponse = {
   notes: Note[];
-  total: number;
+  totalPages: number;
 };
 
 export type Category = {
@@ -52,4 +52,12 @@ export type User = {
   photoUrl?: string;
   createdAt: Date;
   updatedAt: Date;
+};
+
+export type getNotesParams = {
+  page?: number;
+  perPage?: number;
+  sortBy?: "created" | "updated";
+  search?: string;
+  tag?: string;
 };

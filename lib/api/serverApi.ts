@@ -5,8 +5,8 @@ import axios from "axios";
 
 export const possibleCategories: Category[] = [
   {
-    id: "ShopingID",
-    name: "Shoping",
+    id: "ShoppingID",
+    name: "Shopping",
     description: "Shopping Description",
     createdAt: "2024-05-05T10:15:00Z",
     updatedAt: "2024-05-05T10:15:00Z",
