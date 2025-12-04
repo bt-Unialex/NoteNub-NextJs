@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import { nextServer } from "./clientApi";
 import { Category, getNotesParams, NoteListResponse } from "@/types/notes";
 import axios from "axios";
 
@@ -86,7 +85,7 @@ export const notesApi = axios.create({
 export const checkServerSession = async () => {
   // Дістаємо поточні cookie
   const cookieStore = await cookies();
-  const res = await nextServer.get("/auth/session", {
+  const res = await notesApi.get("/auth/session", {
     headers: {
       // передаємо кукі далі
       Cookie: cookieStore.toString(),

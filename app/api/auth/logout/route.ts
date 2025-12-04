@@ -1,5 +1,5 @@
+import { notesApi } from "@/lib/api/serverApi";
 import { cookies } from "next/headers";
-import { notesApi } from "../../api";
 import { NextResponse } from "next/server";
 
 export async function POST() {

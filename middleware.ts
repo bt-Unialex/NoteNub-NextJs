@@ -68,7 +68,8 @@ export const middleware = async (request: NextRequest) => {
   }
 
   // is public route або accessToken є
-  // приватний маршрут — виконуємо редірект на головну
+
+  // auth маршрут — виконуємо редірект на головну
   if (isAuthRoute) {
     return NextResponse.redirect(new URL("/", request.url));
   }
