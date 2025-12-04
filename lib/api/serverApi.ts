@@ -1,5 +1,10 @@
 import { cookies } from "next/headers";
-import { Category, getNotesParams, NoteListResponse } from "@/types/notes";
+import {
+  Category,
+  getNotesParams,
+  NoteListResponse,
+  User,
+} from "@/types/notes";
 import axios from "axios";
 
 export const possibleCategories: Category[] = [
@@ -93,6 +98,14 @@ export const checkServerSession = async () => {
   });
   // Повертаємо повний респонс, щоб middleware мав доступ до нових cookie
   return res;
+};
+
+export const getServerMe = async () => {
+  const cookieStore = await cookies();
+  const { data } = await notesApi.get<User>("/users/me", {
+    headers: { Cookie: cookieStore.toString() },
+  });
+  return data;
 };
 
 export const getNotes = async (quaryParams: getNotesParams = {}) => {

@@ -1,18 +1,22 @@
+import { getServerMe } from "@/lib/api/serverApi";
 import Link from "next/link";
 
-const Profile = () => {
+const Profile = async () => {
+  const user = await getServerMe();
   return (
     <section>
-      <h1>My Profile</h1>
-      <h2>Name: User name</h2>
-      <p>
-        Some description: Lorem, ipsum dolor sit amet consectetur adipisicing
-        elit. Cumque non quis, vero consectetur eum at commodi facere error,
-        laborum, rerum labore corrupti neque veritatis sed minima et nam. Autem,
-        cumque.
-      </p>
-
-      <Link href="/profile/edit">Edit profile</Link>
+      <div>
+        <h1>My Profile</h1>
+        <Link href="/profile/edit">Edit profile</Link>
+      </div>
+      <div>
+        <h2>Name: {user.userName}</h2>
+        <h2>Email: {user.email}</h2>
+        <p>
+          Some description: Lorem ipsum dolor sit amet consectetur adipisicing
+          elit...
+        </p>
+      </div>
     </section>
   );
 };
